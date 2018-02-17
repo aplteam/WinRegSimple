@@ -1,0 +1,37 @@
+ R←Test_002(stopFlag batchFlag);⎕TRAP;rk;buff;data
+⍝ Create a certain key, write some values, read them back and finally delete them.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ rk←'HKCU\Software\APLTree\WinRegSimple\'
+
+ data←'APL is great'
+ ##.WinRegSimple.Write(rk,'reg_sz')data
+ buff←##.WinRegSimple.Read rk,'reg_sz'
+ →GoToTidyUp data≢buff
+
+ data←12345678
+ ##.WinRegSimple.Write(rk,'reg_dword')data
+ buff←##.WinRegSimple.Read rk,'reg_dword'
+ →GoToTidyUp data≢buff
+
+ data←'DefaultValue'
+ ##.WinRegSimple.Write(rk,'\')data
+ buff←##.WinRegSimple.Read rk,'\'
+ →GoToTidyUp data≢buff
+
+ data←271198
+ ##.WinRegSimple.Write(rk,'\')data
+ buff←##.WinRegSimple.Read rk,'\'
+ →GoToTidyUp data≢buff
+
+ ##.WinRegSimple.Delete rk,'\reg_sz'
+ ##.WinRegSimple.Delete rk,'\reg_dword'
+ ##.WinRegSimple.Delete rk
+
+ R←∆OK
+
+∆TidyUp:
+ ##.WinRegSimple.Delete rk,'\reg_sz'
+ ##.WinRegSimple.Delete rk,'\reg_dword'
+ ##.WinRegSimple.Delete rk

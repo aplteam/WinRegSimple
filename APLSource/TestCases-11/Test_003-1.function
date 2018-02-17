@@ -1,0 +1,22 @@
+ R←Test_003(stopFlag batchFlag);⎕TRAP;rk;buff
+⍝ Read a non-existent key
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ rk←'HKCU\Software\APLTree\WinRegSimple\'
+
+ buff←'⍬ ⍬'##.WinRegSimple.Read(rk,'Does_no_exist')
+ →FailsIf'⍬ ⍬'≢buff
+
+ :Trap 0
+     buff←##.WinRegSimple.Read(rk,'Does_no_exist')
+     →FailsIf 1
+ :EndTrap
+
+ ##.WinRegSimple.Write rk 123
+ buff←'⍬ ⍬'##.WinRegSimple.Read(rk,'Does_no_exist')
+ →GoToTidyUp'⍬ ⍬'≢buff
+ R←∆OK
+
+∆TidyUp:
+ ##.WinRegSimple.Delete rk

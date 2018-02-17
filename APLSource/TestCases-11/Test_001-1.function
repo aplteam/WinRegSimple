@@ -1,0 +1,11 @@
+ R←Test_001(stopFlag batchFlag);⎕TRAP;rk;buff
+⍝ Read a key that should exist on any modern computer
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ rk←'HKCU\Software\Microsoft\Windows\CurrentVersion\FileHistory\RestoreUI\FolderViewType'
+
+ buff←##.WinRegSimple.Read rk
+ →FailsIf 0∊⍴buff
+
+ R←∆OK
