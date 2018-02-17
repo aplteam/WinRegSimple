@@ -26,13 +26,14 @@ HKEY_CURRENT_USER
 
 : This is called a "Main key". There are a number of pre-defined main keys available you can choose from. There is also a shortcut available: instead of '''HKEY_CURRENT_USER''' you can use '''HKCU'''.
 
+
 SOFTWARE\Dyalog\Dyalog APL/W 12.0 Unicode
 
-: This is called a '''sub key'''.
+: This is called a _sub key_.
 
-:  On the right side you see a list. The entries in this list are called "values". Therefore '''!CancelKey1''' is a value.
+On the right side you see a list. The entries in this list are called _values_. Therefore "CancelKey1" is a _value_.
 
-:  Note that the '''''names''''' are called values; the actual data saved under a value is called "data".
+Note that the _names_ are called _values_; the actual data saved under a _value_ is called _data_.
 
 
 ## Shared Methods
