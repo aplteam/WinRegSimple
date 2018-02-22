@@ -1,10 +1,15 @@
-# Dealing with the Windows Registry =
+# Dealing with the Windows Registry
+
+
+`WinRegSimple` is a member of the APLTree library. The library is a collection of classes etc. that aim to support the Dyalog APL programmer. Search GitHub for "apltree" and you will find solutions to many every-day problems Dyalog APL programmers might have to solve.
+
 
 ## Overview
 
 This class offers a limited range of methods useful to read, write and delete values from the Windows Registry without using .NET. It uses the [Windows Scripting Host](https://en.wikipedia.org/wiki/Windows_Script_Host). Note that for safety reasons the Windows Script Host might not be available on your Windows box. If that is the case settle for `WinReg`.
 
 For an all-singing-all-dancing class see [WinReg](https://github.com/aplteam/WinReg) which is much more powerful. However, `WinReg` is a complex and large class. If `WinRegSimple` offers what you need stick with it.
+
 
 ## Terminology
 
