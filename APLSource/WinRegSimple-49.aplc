@@ -17,8 +17,9 @@
 
     ∇ History
       :Access Public Shared
-      ⍝ * 1.0.0
-      ⍝   * Very first version.
+      ⍝\\
+      ⍝ For information regarding older versions see <https://github.com/aplteam/WinRegSimple/releases>
+
     ∇
 
     ∇ r←{default}Read key;wsh
