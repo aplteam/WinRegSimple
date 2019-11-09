@@ -1,0 +1,17 @@
+ R←Test_005(stopFlag batchFlag);⎕TRAP;rk;buff
+⍝ Read an empty key
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ rk←'HKCU\Software\APLTree\WinRegSimple\'
+
+ buff←'⍬ ⍬'##.WinRegSimple.Read rk
+ →FailsIf'⍬ ⍬'≢buff
+
+ buff←'⍬ ⍬'##.WinRegSimple.Read''
+ →FailsIf'⍬ ⍬'≢buff
+
+ R←∆OK
+
+∆TidyUp:
+ ##.WinRegSimple.Delete rk
