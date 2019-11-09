@@ -13,7 +13,7 @@
 
     ∇ R←Version
       :Access Public Shared
-      R←(Last⍕⎕THIS)'1.1.2.5' '2019-11-09'
+      R←(Last⍕⎕THIS)'1.1.2.6' '2019-11-09'
     ∇
 
     ∇ History
@@ -37,8 +37,8 @@
       :Trap 11
           r←wsh.RegRead⊂key
       :Else
+          dmx←⎕DMX
           :If 0<⎕NC'default'
-              dmx←⎕DMX
               :If ∨/'DISP_E_EXCEPTION (80070002)'⍷dmx.Message
               :OrIf ∨/'DISP_E_EXCEPTION (80070003)'⍷dmx.Message
                   r←default
@@ -69,25 +69,27 @@
       wsh.RegWrite key(⊃⍣isNumeric⊣data)type
     ∇
 
-    ∇ {r}←Delete key;dmx
+    ∇ {r}←Delete key;dmx;wsh
     ⍝ Delete a key. Not that a key can only be deleted when there are no sub keys.
     ⍝ In case of success a 1 is returned. In case `key` does not exist or is not empty a 0 is returned.
     ⍝ If the function fails for other reasons then an error is signalled.
       :Access Public Shared
       r←1
-      'wsh'⎕WC'OLEClient' 'WScript.Shell'
-      :Trap 11
-          wsh.RegDelete⊂key
-      :Else
-          dmx←⎕DMX
-          :If ∨/'Invalid root in registry key'⍷dmx.Message
-              r←0
-          :ElseIf ∨/'Unable to remove registry key'⍷dmx.Message
-              r←0
+      :If 0<≢key
+          'wsh'⎕WC'OLEClient' 'WScript.Shell'
+          :Trap 11
+              wsh.RegDelete⊂key
           :Else
-              dmx.Message ⎕SIGNAL dmx.EN
-          :EndIf
-      :EndTrap
+              dmx←⎕DMX
+              :If ∨/'Invalid root in registry key'⍷dmx.Message
+                  r←0
+              :ElseIf ∨/'Unable to remove registry key'⍷dmx.Message
+                  r←0
+              :Else
+                  dmx.Message ⎕SIGNAL dmx.EN
+              :EndIf
+          :EndTrap
+      :EndIf
     ∇
 
 :EndClass

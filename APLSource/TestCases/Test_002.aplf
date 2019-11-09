@@ -28,6 +28,7 @@
  ##.WinRegSimple.Delete rk,'\reg_sz'
  ##.WinRegSimple.Delete rk,'\reg_dword'
  ##.WinRegSimple.Delete rk
+ ##.WinRegSimple.Delete''
 
  R←∆OK
 
