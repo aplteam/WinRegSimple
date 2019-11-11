@@ -6,7 +6,7 @@
 
 ## Overview
 
-This class offers a limited range of methods useful to read, write and delete values from the Windows Registry without using .NET. It uses the [Windows Scripting Host](https://en.wikipedia.org/wiki/Windows_Script_Host). Note that for safety reasons the Windows Script Host might not be available on your Windows box. If that is the case settle for `WinReg`.
+This class offers a limited range of methods useful to read, write and delete values and check a value for being available in the Windows Registry without using .NET. It uses the [Windows Script Host](https://en.wikipedia.org/wiki/Windows_Script_Host). Note that for safety reasons the Windows Script Host might not be available on your Windows box. If that is the case settle for `WinReg`.
 
 For an all-singing-all-dancing class see [WinReg](https://github.com/aplteam/WinReg) which is much more powerful. However, `WinReg` is a complex and large class. If `WinRegSimple` offers what you need stick with it.
 
@@ -29,7 +29,7 @@ at the top of the window.
 
 HKEY_CURRENT_USER
 
-: This is called a "Main key". There are a number of pre-defined main keys available you can choose from. There is also a shortcut available: instead of '''HKEY_CURRENT_USER''' you can use '''HKCU'''.
+: This is called a "Main key". There are a number of pre-defined main keys available you can choose from. There is also a shortcut available: instead of `HKEY_CURRENT_USER` you can use `HKCU`.
 
 
 SOFTWARE\Dyalog\Dyalog APL/W 12.0 Unicode
@@ -47,8 +47,9 @@ Note that the _names_ are called _values_; the actual data saved under a _value_
 Read
 Write
 Delete
+Exist
 ```
 
 ## Restrictions
 
-The `Write` method supports just two data types: REG_SZ and REG_DWORD.
+The `Write` method supports just two data types: REG_SZ and REG_DWORD. That is due to the fact that `WinRegSimple` uses the Windows Script Host which itself does not support any other data types.

@@ -1,27 +1,27 @@
 :Class WinRegSimple
-⍝ Offers the methods `Read`, `Write` and `Delete` for dealing with the Windows Registry.\\
-⍝ It does not support any other methods, and it never will.
+⍝ Offers the methods `Read`, `Write`, `Exist` and `Delete` for dealing with the Windows Registry.\\
+⍝ It does not support any other methods, and it probably never will.
 ⍝ It also supports only a limited number of data types: `REG_SZ` and `REG_DWORD`.\\
-⍝ Note that on a non-Enlgish
-⍝ For a more powerful class for dealing with the Windows Registry see the `WinReg` class.\\
-⍝ Kai Jaeger --- APL Team Ltd\\
-⍝ Author: Kai Jaeger ⋄ APL Team Ltd ⋄ <http://aplteam.com>\\
-⍝ Homepage: <https://github.com/aplteam/WinReg>
+⍝ For a more powerful class for dealing with the Windows Registry see the `WinReg` class 
+⍝ (<https://github.com/aplteam/WinReg>).\\
+⍝ Homepage: <https://github.com/aplteam/WinRegSimple>
 
     ⎕ML←1 ⋄    ⎕IO←1
     :Include APLTreeUtils
 
     ∇ R←Version
       :Access Public Shared
-      R←(Last⍕⎕THIS)'1.1.2.6' '2019-11-09'
+      R←(Last⍕⎕THIS)'1.2.0.7' '2019-11-11'
     ∇
 
     ∇ History
       :Access Public Shared
-      ⍝ * 1.1.2
-      ⍝   * `wsh` localyzed.
-      ⍝   * `⎕DMX` handling improved'
-      ⍝   * Link to the APL wiki replaced by one to GitHub
+      ⍝ * 1.2.0
+      ⍝   * Method `Exist` added.
+      ⍝   * Bug fixes:
+      ⍝     * `wsh` localyzed.
+      ⍝     * `⎕DMX` handling improved'
+      ⍝     * Link to the APL wiki replaced by one to GitHub
       ⍝\\
       ⍝ For information regarding older versions see <https://github.com/aplteam/WinRegSimple/releases>
      
@@ -87,6 +87,25 @@
                   r←0
               :Else
                   dmx.Message ⎕SIGNAL dmx.EN
+              :EndIf
+          :EndTrap
+      :EndIf
+    ∇
+
+    ∇ bool←Exists key;dmx;wsh
+    ⍝ Checks whether `key` does exist and returns 1 if so, otherwise 0.
+      :Access Public Shared
+      bool←0
+      :If 0<≢key
+          'wsh'⎕WC'OLEClient' 'WScript.Shell'
+          :Trap 11
+              {}wsh.RegRead⊂key
+              bool←1
+          :Else
+              dmx←⎕DMX
+              :If 0=+/'DISP_E_EXCEPTION (80070002)'⍷dmx.Message
+              :AndIf 0=+/'DISP_E_EXCEPTION (80070003)'⍷dmx.Message
+                  bool←1
               :EndIf
           :EndTrap
       :EndIf
