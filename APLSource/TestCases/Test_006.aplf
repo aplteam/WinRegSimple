@@ -1,13 +1,13 @@
  R←Test_006(stopFlag batchFlag);⎕TRAP;rk
 ⍝ Check keys for existence
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  rk←'HKCU\Software\APLTree\Unknown\Kai\Firlefanz\ReallyUnknown'
- →PassesIf 0=##.WinRegSimple.Exists rk
+ →T.PassesIf 0=##.WinRegSimple.Exists rk
 
  rk←'HKLM\SYSTEM\CurrentControlSet\Control\CurrentUser'
- →PassesIf 1=##.WinRegSimple.Exists rk
+ →T.PassesIf 1=##.WinRegSimple.Exists rk
 
- R←∆OK
+ R←T._OK
 ⍝Done

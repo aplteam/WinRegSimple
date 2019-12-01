@@ -1,22 +1,33 @@
  R←Test_003(stopFlag batchFlag);⎕TRAP;rk;buff
 ⍝ Read a non-existent key
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  rk←'HKCU\Software\APLTree\WinRegSimple\'
 
- buff←'⍬ ⍬'##.WinRegSimple.Read(rk,'Does_no_exist')
- →FailsIf'⍬ ⍬'≢buff
+ :Trap 0
+     buff←'⍬ ⍬'##.WinRegSimple.Read(rk,'Does_no_exist')
+     →T.FailsIf'⍬ ⍬'≢buff
+ :Else
+     →T.PassesIf∨/'Invalid root in registry key'⍷∊⎕DM
+ :EndTrap
 
  :Trap 0
      buff←##.WinRegSimple.Read(rk,'Does_no_exist')
-     →FailsIf 1
+     →T.FailsIf 1
+ :Else
+     →T.PassesIf∨/'Invalid root in registry key'⍷∊⎕DM
  :EndTrap
 
  ##.WinRegSimple.Write rk 123
- buff←'⍬ ⍬'##.WinRegSimple.Read(rk,'Does_no_exist')
- →GoToTidyUp'⍬ ⍬'≢buff
- R←∆OK
+ :Trap 0
+     buff←'⍬ ⍬'##.WinRegSimple.Read(rk,'Does_no_exist')
+     →T.FailsIf 1
+ :Else
+     →T.PassesIf∨/'Unable to open registry key'⍷∊⎕DM
+ :EndTrap
+
+ R←T._OK
 
 ∆TidyUp:
  ##.WinRegSimple.Delete rk

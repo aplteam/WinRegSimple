@@ -1,32 +1,32 @@
  R←Test_004(stopFlag batchFlag);⎕TRAP;rk;buff;data
 ⍝ Check error conditions
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  rk←'HKCU\Software\APLTree\WinRegSimple\'
 
  data←2 2⍴'APL is great'
  :Trap 0
      ##.WinRegSimple.Write(rk,'reg_sz')data
-     →FailsIf 1
+     →T.FailsIf 1
  :Else
-     →PassesIf 0<+/'Invalid data (rank)'⍷⎕DMX.EM
+     →T.PassesIf 0<+/'Invalid data (rank)'⍷⎕DMX.EM
  :EndTrap
 
  data←1.1
  :Trap 0
      ##.WinRegSimple.Write(rk,'reg_sz')data
-     →FailsIf 1
+     →T.FailsIf 1
  :Else
-     →PassesIf 0<+/'Invalid data (rank)'⍷⎕DMX.EM
+     →T.PassesIf 0<+/'Invalid data (rank)'⍷⎕DMX.EM
  :EndTrap
 
  data←⊂⊂'abc'
  :Trap 0
      ##.WinRegSimple.Write(rk,'reg_sz')data
-     →FailsIf 1
+     →T.FailsIf 1
  :Else
-     →PassesIf 0<+/'Invalid data (depth)'⍷⎕DMX.EM
+     →T.PassesIf 0<+/'Invalid data (depth)'⍷⎕DMX.EM
  :EndTrap
 
- R←∆OK
+ R←T._OK
