@@ -19,14 +19,6 @@
      →T.PassesIf∨/'Invalid root in registry key'⍷∊⎕DM
  :EndTrap
 
- ##.WinRegSimple.Write rk 123
- :Trap 0
-     buff←'⍬ ⍬'##.WinRegSimple.Read(rk,'Does_no_exist')
-     →T.FailsIf 1
- :Else
-     →T.PassesIf∨/'Unable to open registry key'⍷∊⎕DM
- :EndTrap
-
  R←T._OK
 
 ∆TidyUp:

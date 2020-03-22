@@ -11,14 +11,13 @@
 
     ∇ R←Version
       :Access Public Shared
-      R←(Last⍕⎕THIS)'1.2.1.9' '2019-12-01'
+      R←(Last⍕⎕THIS)'2.0.0.10' '2020-03-22'
     ∇
 
     ∇ History
       :Access Public Shared
-      ⍝ * 1.2.1
-      ⍝   * Bug fix: `Exist` failed because under some circumstances Windows does not provide an 
-      ⍝     error code but an error message.
+      ⍝ * 2.0.0
+      ⍝   * BREAKING CHANGE: file extension is now .aplc rather than .dyalog
       ⍝\\
       ⍝ For information regarding older versions see <https://github.com/aplteam/WinRegSimple/releases>
      
