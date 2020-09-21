@@ -7,17 +7,17 @@
 ⍝ Homepage: <https://github.com/aplteam/WinRegSimple>
 
     ⎕ML←1 ⋄    ⎕IO←1
-    :Include APLTreeUtils
 
     ∇ R←Version
       :Access Public Shared
-      R←(Last⍕⎕THIS)'2.0.0.10' '2020-03-22'
+      R←'WinRegSimple' '3.0.0.11' '2020-09-21'
     ∇
 
     ∇ History
       :Access Public Shared
-      ⍝ * 2.0.0
-      ⍝   * BREAKING CHANGE: file extension is now .aplc rather than .dyalog
+      ⍝ * 3.0.0
+      ⍝   * BREAKING CHANGEs: Requires at least Dyalog 18.0
+      ⍝     
       ⍝\\
       ⍝ For information regarding older versions see <https://github.com/aplteam/WinRegSimple/releases>
      
