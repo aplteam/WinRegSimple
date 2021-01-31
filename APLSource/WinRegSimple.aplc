@@ -10,7 +10,7 @@
 
     ∇ R←Version
       :Access Public Shared
-      R←'WinRegSimple' '3.0.0.11' '2020-09-21'
+      R←'WinRegSimple' '3.0.0.13' '2020-09-21'
     ∇
 
     ∇ History
