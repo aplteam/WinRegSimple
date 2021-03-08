@@ -8,13 +8,15 @@
 
     ⎕ML←1 ⋄    ⎕IO←1
 
-    ∇ R←Version
+    ∇ r←Version
       :Access Public Shared
-      R←'WinRegSimple' '3.0.0.13' '2020-09-21'
+      r←'WinRegSimple' '3.0.1+15' '2021-03-02'
     ∇
 
     ∇ History
       :Access Public Shared
+      ⍝ * 3.0.1
+      ⍝   * Package config corrected
       ⍝ * 3.0.0
       ⍝   * BREAKING CHANGEs: Requires at least Dyalog 18.0
       ⍝     
