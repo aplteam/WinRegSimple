@@ -6,7 +6,9 @@
 
 ## Overview
 
-This class offers a limited range of methods useful to read, write and delete values and check a value for being available in the Windows Registry without using .NET. It uses the [Windows Script Host](https://en.wikipedia.org/wiki/Windows_Script_Host). Note that for safety reasons the Windows Script Host might not be available on your Windows box. If that is the case settle for `WinReg`.
+This class offers a limited range of methods useful to read, write and delete values and check a value for being available in the Windows Registry without using .NET. It uses the [Windows Script Host](https://en.wikipedia.org/wiki/Windows_Script_Host). It is limited to the most common data types.
+
+Note that for safety reasons the Windows Script Host might not be available on your Windows box. If that is the case settle for `WinReg`.
 
 For an all-singing-all-dancing class see [WinReg](https://github.com/aplteam/WinReg) which is much more powerful. However, `WinReg` is a complex and large class. If `WinRegSimple` offers what you need stick with it.
 

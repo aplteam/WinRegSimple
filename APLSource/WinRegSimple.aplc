@@ -3,14 +3,16 @@
 ⍝ It does not support any other methods, and it probably never will.
 ⍝ It also supports only a limited number of data types: `REG_SZ` and `REG_DWORD`.\\
 ⍝ For a more powerful class for dealing with the Windows Registry see the `WinReg` class
-⍝ (<https://github.com/aplteam/WinReg>).\\
+⍝ (<https://github.com/aplteam/WinReg>).\\           
+⍝ Author: Kai Jaeger
 ⍝ Homepage: <https://github.com/aplteam/WinRegSimple>
+
 
     ⎕ML←1 ⋄    ⎕IO←1
 
     ∇ r←Version
       :Access Public Shared
-      r←'WinRegSimple' '3.0.1+15' '2021-03-02'
+      r←'WinRegSimple' '3.0.1+16' '2021-03-02'
     ∇
 
     ∇ History
