@@ -1,0 +1,20 @@
+ {r}←Delete key;dmx;wsh
+⍝ Delete a key. Not that a key can only be deleted when there are no sub keys.
+⍝ In case of success a 1 is returned. In case `key` does not exist or is not empty a 0 is returned.
+⍝ If the function fails for other reasons then an error is signalled.
+ r←1
+ :If 0<≢key
+     'wsh'⎕WC'OLEClient' 'WScript.Shell'
+     :Trap 11
+         wsh.RegDelete⊂key
+     :Else
+         dmx←⎕DMX
+         :If ∨/'Invalid root in registry key'⍷dmx.Message
+             r←0
+         :ElseIf ∨/'Unable to remove registry key'⍷dmx.Message
+             r←0
+         :Else
+             dmx.Message ⎕SIGNAL dmx.EN
+         :EndIf
+     :EndTrap
+ :EndIf

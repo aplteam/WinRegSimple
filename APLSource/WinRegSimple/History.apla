@@ -1,0 +1,11 @@
+(
+ '* 3.0.2'
+ '  * Transform from a class to an ordinary namespace'
+ '  * The corrected package config file did not make it into the package'
+ '* 3.0.1'
+ '  * Package config corrected'
+ '* 3.0.0'
+ '  * BREAKING CHANGEs: Requires at least Dyalog 18.0'
+ ''
+ 'For information regarding older versions see <https://github.com/aplteam/WinRegSimple/releases>'
+)

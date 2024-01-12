@@ -1,5 +1,5 @@
 {
-  api: "WinRegSimple",
+  api: "",
   assets: "",
   description: "Limited set of tools for dealing with the Windows Registry",
   documentation: "",
@@ -16,8 +16,8 @@
   os_mac: 1,
   os_win: 1,
   project_url: "https://github.com/aplteam/WinRegSimple",
-  source: "APLSource/WinRegSimple.aplc",
+  source: "APLSource/WinRegSimple",
   tags: "windows-registry",
   userCommandScript: "",
-  version: "3.0.1+17",
+  version: "3.1.0+20",
 }

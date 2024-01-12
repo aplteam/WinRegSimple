@@ -1,0 +1,15 @@
+ {r}←Write(key data);wsh;type;isNumeric
+⍝ Write a value to the Windows Registry. If the value does not yet exist it will be created.\\
+⍝ Note that you can write the default value; for that `key` has to have a trailing backslash.\\
+⍝ If `data` is a text vector it will be written as REG_SZ. If it is an integer it will be written
+⍝ as REG_DWORD. Note that if it is an integer then it must be a one-item vector or a scalar.
+ 'Invalid data (depth)'⎕SIGNAL 11/⍨~(≡data)∊0 1
+ 'Invalid data (rank)'⎕SIGNAL 11/⍨~(⍴⍴data)∊0 1
+ :If isNumeric←⊃0=1↑0⍴data
+ :AndIf data≠⌊data
+     'Invalid data (rank)'⎕SIGNAL 11/⍨1≠⍴⍴data
+ :EndIf
+ type←(1+isNumeric)⊃'REG_SZ' 'REG_DWORD'
+ r←0
+ 'wsh'⎕WC'OLEClient' 'WScript.Shell'
+ wsh.RegWrite key(⊃⍣isNumeric⊣data)type

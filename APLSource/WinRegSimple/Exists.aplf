@@ -1,0 +1,17 @@
+ bool←Exists key;dmx;wsh
+⍝ Checks whether `key` does exist and returns 1 if so, otherwise 0.
+ bool←0
+ :If 0<≢key
+     'wsh'⎕WC'OLEClient' 'WScript.Shell'
+     :Trap 11
+         {}wsh.RegRead⊂key
+         bool←1
+     :Else
+         dmx←⎕DMX
+         :If 0=+/'DISP_E_EXCEPTION (80070002)'⍷dmx.Message
+         :AndIf 0=+/'DISP_E_EXCEPTION (80070003)'⍷dmx.Message
+         :AndIf 0=+/'Invalid root in registry key'⍷dmx.Message
+             bool←1
+         :EndIf
+     :EndTrap
+ :EndIf

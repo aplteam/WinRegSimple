@@ -1,0 +1,21 @@
+ r←{default}Read key;dmx;wsh
+⍝ Read a value from the Windows Registry.\\
+⍝ In case `key` does not exist but `default` was specified `r` becomes `default`.
+⍝ Otherwise an error 11 is thrown.\\
+⍝ Note that you can read the default value; for that `key` has to have a trailing backslash.\\
+ 'wsh'⎕WC'OLEClient' 'WScript.Shell'
+ :Trap 11
+     r←wsh.RegRead⊂key
+ :Else
+     dmx←⎕DMX
+     :If 0<⎕NC'default'
+         :If ∨/'DISP_E_EXCEPTION (80070002)'⍷dmx.Message
+         :OrIf ∨/'DISP_E_EXCEPTION (80070003)'⍷dmx.Message
+             r←default
+         :Else
+             dmx.Message ⎕SIGNAL 11
+         :EndIf
+     :Else
+         dmx.Message ⎕SIGNAL 11
+     :EndIf
+ :EndTrap
