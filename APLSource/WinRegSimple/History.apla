@@ -1,4 +1,7 @@
 (
+ '* 3.0.2 ⋄ 2024-12-01'
+ '  * Packages updated'
+ '  * `Version` function modified'
  '* 3.0.2'
  '  * Transform from a class to an ordinary namespace'
  '  * The corrected package config file did not make it into the package'

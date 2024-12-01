@@ -1,6 +1,3 @@
  r←Version;json;ns
- r←'WinRegSimple' '3.0.1+16' '2021-03-02'
- json←⎕JSON⍠('Dialect' 'JSON5')⊣⊃⎕NGET TatinVars.HOME,'/apl-package.json'
- ns←⎕JSON⍠('Dialect' 'JSON5')⊣TatinVars.CONFIG
- 'Version number in the package config file and in workspace differ?!'⎕SIGNAL 11/⍨json.version≢ns.version
- r←'Latest'json.version'2024-01-12'
+⍝ See also `History`
+ r←'WinRegSimple' '3.1.0+16' '2024-12-01'
