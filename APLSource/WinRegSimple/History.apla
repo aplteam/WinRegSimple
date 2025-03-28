@@ -1,4 +1,7 @@
 (
+ '* 4.002 ⋄ 2025-03-28'
+ '  * Syntax change: `Version` now returns the version number according to the package config file'
+ '  * `Make polished`'
  '* 3.0.2 ⋄ 2024-12-01'
  '  * Packages updated'
  '  * `Version` function modified'
